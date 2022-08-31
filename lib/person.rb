@@ -1,4 +1,5 @@
 # your code goes here
+require 'pry'
 class Person
     attr_accessor  :bank_account, :happiness, :hygiene
     attr_reader :name
@@ -9,7 +10,7 @@ class Person
         @name = name
     end
     #def bank_account (value = )
-    def happines= (rate)
+    def happiness= (rate)
         if @happiness + rate > 0 && @happiness + rate <= 10
             @happiness += rate
         end
@@ -17,7 +18,7 @@ class Person
 
     def hygiene= (leve)
         if level >= 0 and @hygiene + level <= 10
-            h@hygiene += level
+            @hygiene += level
         end
     end
 
@@ -42,21 +43,39 @@ class Person
         "all about the benjamins" 
     end
 
-    def takes_bath (points)
-        if @hygiene + points < 10
-            @hygiene += points
-        else
-            "Hygiene level above maximum"
-        end
+    def takes_bath (points)  
+        @hygiene += points
+        "♪ Rub-a-dub just relaxing in the tub ♫"
     end
 
-    def work_out (dirty_points) 
-        if @hygiene - dirty_points >= 0
-            hygiene=(-dirty_points)
+    def work_out
+       @happiness += 2
+       @hygiene -= 3
+        "♪ another one bites the dust ♫"
+    end
+
+    def call_friend (friend)
+      self.happiness= (3)
+      friend.happiness= (3) 
+      "Hi Felix! It's Stella. How are you?"
+    end
+
+    def start_conversation (respodent, topic)
+        if topic == "politics"
+            @happiness -=  2
+            "blah blah partisan blah lobbyist"
+        elsif topic == "weather"
+            @happiness += 1
+            "blah blah sun blah rain"
+        else 
+            "blah blah sun blah rain"
         end
-        if @happiness + dirty_points <= 10
-            happiness=(dirty_points)
-        end
+
     end
 
 end
+
+# oscar = Person.new("oscar")
+# puts oscar
+# binding.pry
+
